@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Love Apothecary — Love Potion</title>
+  <meta name="description" content="Love Apothecary • Wishes & Crafts • Love in the Air" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff7abf'%3E%3Cpath d='M20.8 4.6c-1.9-1.8-5-1.8-6.9 0L12 6.5 10.1 4.6c-1.9-1.8-5-1.8-6.9 0-2 1.9-2 5 0 6.9l1.9 1.9L12 21l6.9-7.6 1.9-1.9c2-1.9 2-5 0-6.9z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #0a0a0a;
+      --bg2: #0b0b10;
+      --bg3: #000;
+      --pink: #ff3f9e;
+      --rose: #ff5f9f;
+      --white: rgba(255, 255, 255, .9);
+      --muted: rgba(255, 255, 255, .65);
+      --line: rgba(255, 255, 255, .12)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      color: #fff;
+      background: linear-gradient(180deg, var(--bg2) 0%, #080808 30%, #060606 60%, #040404 80%, var(--bg3) 100%);
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      /* Safari bottom bar fix */
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      /* Safari fix for glow clipping */
+      overflow: visible;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    main.container {
+      margin-top: 80px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, .3);
+      z-index: 40;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 32px
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .brand-name {
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--white);
+      font-size: 17px;
+    }
+
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .05);
+      padding: 8px 12px;
+      border-radius: 14px;
+      font-weight: 500;
+    }
+
+    .hero {
+      padding: 60px 0 100px;
+      text-align: center;
+      position: relative;
+      margin: 0 0 80px 0;
+      padding-left: 60px;
+      padding-right: 60px;
+      /* Safari fix for glow clipping */
+      overflow: visible;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-mask-image: none;
+      mask-image: none;
+      isolation: isolate;
+    }
+
+    .neon {
+      font-family: 'Neonderthaw', cursive;
+      font-size: clamp(36px, 6.5vw, 78px);
+      line-height: 1.1;
+      color: #ffc7e5;
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      padding: 24px 0;
+    }
+
+    .neon::before {
+      content: "Love Apothecary";
+      position: absolute;
+      top: -20px;
+      left: -40px;
+      right: -40px;
+      bottom: -20px;
+      color: transparent;
+      background: rgba(255, 63, 158, .35);
+      filter: blur(25px);
+      -webkit-filter: blur(25px);
+      opacity: .7;
+      animation: pulse 2s infinite ease-in-out;
+      /* Safari-specific fixes */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform;
+      /* Ensure glow extends beyond container */
+      z-index: -1;
+      -webkit-mask-image: none;
+      mask-image: none;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      isolation: isolate;
+      font-family: 'Neonderthaw', cursive;
+      font-size: clamp(40px, 7vw, 86px);
+      line-height: 1.03;
+    }
+
+    .neon span {
+      position: relative;
+      text-shadow: 0 0 10px rgba(255, 80, 180, .8), 0 0 20px rgba(255, 60, 150, .6), 0 0 30px rgba(255, 40, 120, .4);
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    .neon span::after {
+      content: "✨";
+      position: absolute;
+      top: -10px;
+      right: -20px;
+      font-size: 0.6em;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    .neon span::before {
+      content: "✨";
+      position: absolute;
+      bottom: -10px;
+      left: -20px;
+      font-size: 0.6em;
+      animation: sparkle 3s ease-in-out infinite 1.5s;
+    }
+
+    .tagline {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 17px;
+      letter-spacing: 0.6px;
+      line-height: 1.4;
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none
+    }
+
+    .glow .blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(90px);
+      opacity: .22
+    }
+
+    .blob1 {
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(70vh, 100vw);
+      height: min(70vh, 100vw);
+      background: rgba(255, 60, 160, .25)
+    }
+
+    .blob2 {
+      bottom: -140px;
+      left: 20px;
+      width: min(50vh, 60vw);
+      height: min(50vh, 60vw);
+      background: rgba(220, 80, 255, .18)
+    }
+
+    .blob3 {
+      bottom: -80px;
+      right: 20px;
+      width: min(40vh, 50vw);
+      height: min(40vh, 50vw);
+      background: rgba(255, 120, 160, .18)
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .05);
+      border-radius: 20px;
+      padding: 40px 32px;
+      margin: 40px 0 40px 0;
+    }
+
+    @media(min-width:860px) {
+      .card {
+        grid-template-columns: 1fr 1fr;
+        padding: 48px 40px;
+        gap: 44px;
+      }
+    }
+
+    @media(min-width:1200px) {
+      .container {
+        max-width: 1300px;
+        padding: 0 36px;
+      }
+
+      .card {
+        padding: 60px 52px;
+        gap: 52px;
+      }
+
+      .hero {
+        padding: 80px 0 120px;
+        margin-bottom: 90px;
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+
+      .neon {
+        padding: 24px 0;
+      }
+
+      .tagline {
+        margin-top: 32px;
+        font-size: 18px;
+      }
+    }
+
+    .bottle-wrap {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 460px;
+      padding: 24px 0;
+    }
+
+    .bottle-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .bottle-container::before {
+      content: "🔮";
+      position: absolute;
+      top: -30px;
+      left: -20px;
+      font-size: 24px;
+      animation: sparkle 4s ease-in-out infinite;
+      z-index: 5;
+    }
+
+    .bottle-container::after {
+      content: "✨";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 20px;
+      animation: sparkle 4s ease-in-out infinite 2s;
+      z-index: 5;
+    }
+
+
+    .hint {
+      margin-top: 24px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, .7);
+      letter-spacing: 0.4px;
+      line-height: 1.4;
+    }
+
+    .wiggle {
+      animation: wiggle 0.8s ease-in-out infinite, float 3s ease-in-out infinite
+    }
+
+    @keyframes wiggle {
+      0% {
+        transform: rotate(0)
+      }
+
+      25% {
+        transform: rotate(-2deg)
+      }
+
+      75% {
+        transform: rotate(2deg)
+      }
+
+      100% {
+        transform: rotate(0)
+      }
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+      padding-top: 5px;
+    }
+
+    @media(min-width:860px) {
+      .grid3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+    }
+
+    .info {
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, .25);
+      border-radius: 14px;
+      padding: 18px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .8);
+      transition: all 0.3s ease;
+      line-height: 1.5;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .info:hover {
+      transform: translateY(-3px);
+      background: rgba(0, 0, 0, .35);
+      border-color: rgba(255, 63, 158, .4);
+      box-shadow: 0 8px 25px rgba(255, 63, 158, .15);
+    }
+
+    .info .title {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: #e9d7ff;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .buy-section {
+      margin: 36px 0;
+    }
+
+    .buyrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      margin-bottom: 22px
+    }
+
+    .buy-button-container {
+      position: relative;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    @media(min-width: 768px) {
+      .buy-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+
+      .buyrow {
+        margin-bottom: 0;
+        gap: 24px;
+      }
+
+      .buy-button-container {
+        margin-bottom: 0;
+      }
+
+      .buy-section .subtle {
+        width: 100%;
+        text-align: center;
+        margin-top: 18px;
+      }
+    }
+
+    .price {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .05);
+      border-radius: 16px;
+      padding: 6px 8px
+    }
+
+    .qty button {
+      color: #fff;
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .qty button:hover {
+      background: rgba(255, 255, 255, .1)
+    }
+
+    .accordion button:hover {
+      background: rgba(255, 255, 255, .1);
+      color: var(--white);
+    }
+
+    .qty .val {
+      width: 32px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 24px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      background: rgba(255, 63, 158, .9);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 0, 128, .35);
+      animation: glow 2s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgb(255, 63, 158);
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(255, 0, 128, .6), 0 0 80px rgba(255, 0, 128, .3);
+    }
+
+    .subtle {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      text-align: center;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    #stockLine {
+      margin-top: 8px;
+    }
+
+    .pulse {
+      animation: pulse 1.8s ease-in-out infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: .7
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 30px rgba(255, 0, 128, .35);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(255, 0, 128, .6), 0 0 60px rgba(255, 0, 128, .3);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+      }
+    }
+
+    /* Floating magical elements */
+    .magic-dust {
+      position: fixed;
+      pointer-events: none;
+      z-index: 5;
+      animation: float-magic 12s linear infinite;
+      opacity: 0.3;
+      font-size: 14px;
+    }
+
+    @keyframes float-magic {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.2;
+      }
+
+      85% {
+        opacity: 0.2;
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(180deg);
+        opacity: 0;
+      }
+    }
+
+    .accordion {
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, .2);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 24px
+    }
+
+    .accordion button {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, .8);
+      cursor: pointer;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .accordion ul {
+      margin: 18px 0 0 20px;
+      padding: 0;
+      color: rgba(255, 255, 255, .75);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      color: rgba(255, 255, 255, .55);
+      text-align: center;
+      padding: 40px 0 50px;
+      margin-top: 40px;
+    }
+
+    /* Fireflies */
+    .fly {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: rgba(255, 255, 255, .8);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 50;
+      animation: rise .8s ease-out forwards
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-20px) scale(.5);
+        opacity: 0
+      }
+    }
+
+    /* Heart burst */
+    .heart {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      color: #ff75b5;
+      filter: drop-shadow(0 0 6px rgba(255, 0, 128, .75));
+    }
+
+    .burst {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -8px;
+      height: 0;
+      pointer-events: none
+    }
+
+    .hb {
+      animation: floatUp 1s ease-out forwards
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-80px);
+        opacity: 0
+      }
+    }
+
+    /* Utility */
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .05);
+      transition: all 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 63, 158, .3);
+      transform: translateY(-1px);
+    }
+
+    /* Drawer */
+    .drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 60
+    }
+
+    .drawer.open {
+      display: flex
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 520px;
+      background: #0f0f12;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px 24px 28px;
+      margin: 24px;
+      max-height: 90vh;
+      overflow-y: auto
+    }
+
+
+    .form-group {
+      margin-bottom: 24px
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 15px
+    }
+
+    .rating-container {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .star {
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: rgba(255, 255, 255, .6);
+      font-size: 18px
+    }
+
+    .star:hover {
+      background: rgba(255, 255, 255, .1);
+      color: #ffc7e5;
+      border-color: #ff3f9e
+    }
+
+    .star.active {
+      background: rgba(255, 63, 158, .2);
+      color: #ff3f9e;
+      border-color: #ff3f9e
+    }
+
+    .star.active~.star {
+      color: rgba(255, 255, 255, .3)
+    }
+
+    /* Social Proof Section */
+    .social-proof a:hover {
+      background: rgba(255, 63, 158, .2) !important;
+      border-color: rgba(255, 63, 158, .5) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 767px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      main.container {
+        margin-top: 60px;
+      }
+
+      .hero {
+        padding: 40px 0 80px;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-bottom: 60px;
+      }
+
+      .neon {
+        padding: 14px 0;
+      }
+
+      .tagline {
+        margin-top: 20px;
+        font-size: 15px;
+      }
+
+      .card {
+        padding: 40px 24px;
+        margin: 40px 0;
+        gap: 40px;
+      }
+
+      .buyrow {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      .grid3 {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .topbar-inner {
+        padding: 20px;
+      }
+
+      .social-links {
+        margin: 28px 0 !important;
+        padding: 24px !important;
+      }
+
+      .feedback-sidebar {
+        display: none !important;
+      }
+    }
+
+    /* Safari-specific fixes for glow effects and horizontal scroll */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+      html,
+      body {
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .hero {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+        margin-left: -40px;
+        margin-right: -40px;
+        width: calc(100% + 80px);
+      }
+
+      .hero {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        overflow: visible;
+        -webkit-mask-image: none;
+        mask-image: none;
+        -webkit-clip-path: none;
+        clip-path: none;
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        isolation: auto;
+        padding: 20px 40px;
+        margin: -20px -40px;
+      }
+
+      .neon::before {
+        display: none;
+      }
+
+      .neon {
+        text-shadow:
+          0 0 10px rgba(255, 80, 180, .8),
+          0 0 20px rgba(255, 60, 150, .6),
+          0 0 30px rgba(255, 40, 120, .4),
+          0 0 40px rgba(255, 20, 100, .3),
+          0 0 50px rgba(255, 0, 80, .2);
+        padding: 20px 40px;
+        margin: -20px -40px;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        overflow: visible;
+      }
+
+      .bottle-wrap {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        overflow: visible;
+      }
+
+      .bottle-container {
+        overflow: hidden;
+      }
+
+      .btn {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        overflow: visible;
+        -webkit-mask-image: none;
+        mask-image: none;
+        -webkit-clip-path: none;
+        clip-path: none;
+        animation: none;
+        -webkit-animation: none;
+        will-change: transform;
+        position: relative;
+        z-index: 1;
+        box-shadow:
+          0 0 20px rgba(255, 0, 128, .4),
+          0 0 40px rgba(255, 0, 128, .3),
+          0 0 60px rgba(255, 0, 128, .2),
+          0 0 80px rgba(255, 0, 128, .1);
+      }
+
+      .glow {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        overflow: visible;
+      }
+
+      .glow .blob {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .neon {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        overflow: visible;
+        -webkit-mask-image: none;
+        mask-image: none;
+        -webkit-clip-path: none;
+        clip-path: none;
+        isolation: auto;
+      }
+
+      .card {
+        overflow: visible;
+        padding: 40px 24px;
+      }
+
+      .buy-button-container {
+        overflow: visible;
+        -webkit-mask-image: none;
+        mask-image: none;
+        -webkit-clip-path: none;
+        clip-path: none;
+        padding: 20px;
+        margin: -20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .buy-section {
+        overflow: visible;
+        padding: 20px;
+        margin: -20px;
+      }
+
+      .grid3 {
+        overflow: hidden;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N82MNYS571"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N82MNYS571');
+  </script>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="glow">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+    </div>
+
+    <!-- Floating magical elements -->
+    <div class="magic-dust" style="left: 20%; animation-delay: 0s;">✨</div>
+    <div class="magic-dust" style="left: 50%; animation-delay: 4s;">💫</div>
+    <div class="magic-dust" style="left: 80%; animation-delay: 8s;">✨</div>
+
+    <header class="topbar">
+      <div class="topbar-inner container">
+        <div class="brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff7abf" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M20.8 4.6c-1.9-1.8-5-1.8-6.9 0L12 6.5 10.1 4.6c-1.9-1.8-5-1.8-6.9 0-2 1.9-2 5 0 6.9l1.9 1.9L12 21l6.9-7.6 1.9-1.9c2-1.9 2-5 0-6.9z" />
+          </svg>
+          <a href="https://loveapothecary.shop" class="brand-name"
+            style="text-decoration:none;color:inherit;">loveapothecary.shop</a>
+        </div>
+        <div class="row muted" style="font-size:12px">
+          <button id="openLore" class="pill">ⓘ Batch story</button>
+          <span>★</span>
+          <span>Only one thing here: Love Potion</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1 class="neon"><span>Love Apothecary</span></h1>
+        <div class="tagline">Herbal Love Elixirs</div>
+      </section>
+
+      <section class="card">
+        <div class="bottle-wrap">
+          <div class="bottle-container">
+            <svg id="bottle" class="wiggle" viewBox="0 0 220 280" width="220" height="280" aria-hidden="true">
+              <defs>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
+                  <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <clipPath id="liquid-clip">
+                  <path id="liquidPath" d="M40 160 C 60 142, 160 142, 180 160 Q 150 230, 110 246 Q 70 218, 40 160 Z">
+                  </path>
+                </clipPath>
+              </defs>
+              <path d="M110 70c-10 0-18-8-18-18 0-8 5-15 12-17V24h12v11c7 2 12 9 12 17 0 10-8 18-18 18z"
+                fill="transparent" stroke="#fb6ea9" stroke-width="3" filter="url(#glow)" />
+              <path d="M110 80c-36 0-70 29-70 68 0 52 70 98 70 98s70-46 70-98c0-39-34-68-70-68z" fill="transparent"
+                stroke="#fb6ea9" stroke-width="5" filter="url(#glow)" />
+              <g clip-path="url(#liquid-clip)">
+                <rect x="40" y="140" width="150" height="120" fill="rgba(255,110,170,.32)"></rect>
+                <circle cx="100" cy="170" r="6" fill="#ffc0da" opacity=".9"></circle>
+                <circle cx="130" cy="185" r="4" fill="#ffd5e6" opacity=".9"></circle>
+                <circle cx="120" cy="205" r="5" fill="#ffd5e6" opacity=".9"></circle>
+              </g>
+            </svg>
+          </div>
+          <div class="hint">Double‑tap to make a wish ✧ (the magic is real!)</div>
+
+        </div>
+
+        <div>
+          <h2 style="margin:0 0 16px;font-size:30px;font-weight:700;line-height:1.2">Love Potion No. 2</h2>
+          <p style="margin:0 0 20px;color:rgba(255,255,255,.8);line-height:1.6;font-size:17px">A potent herbal
+            tincture
+            that actually works its magic — melts away stress, awakens desire, and opens hearts to love. Real herbs,
+            real effects,
+            real enchantment.</p>
+          <p class="muted" style="margin:0 0 32px;font-size:15px;line-height:1.4">Batch: BM Tomorrow Today — Limited
+            Edition from the Playa
+          </p>
+
+          <div class="buy-section">
+            <div class="buyrow">
+              <div class="price">$<span id="price">33</span> <span style="font-size:14px;vertical-align:top">USD</span>
+              </div>
+              <div class="qty" aria-label="Quantity selector">
+                <button id="minus" aria-label="Decrease">−</button>
+                <div class="val" id="qty">1</div>
+                <button id="plus" aria-label="Increase">+</button>
+              </div>
+            </div>
+
+            <div class="buy-button-container">
+              <button id="buyBtn" class="btn">✨ Cast Your Love Spell <span class="muted">• $<span
+                    id="total">33</span></span></button>
+              <div id="burst" class="burst"></div>
+            </div>
+
+            <div id="stockLine" class="subtle pulse">✨ Only 24 enchanted phials remain • limited magical batch ✨</div>
+          </div>
+
+          <!-- Social CTAs -->
+          <div style="margin: 32px 0; text-align: center;">
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center;">
+              <a href="#" id="facebookPostLink" target="_blank" rel="noopener noreferrer"
+                style="display:inline-flex;align-items:center;gap:8px;padding:12px 16px;background:rgba(255,63,158,.1);border:1px solid rgba(255,63,158,.3);border-radius:12px;color:#ffc7e5;text-decoration:none;font-weight:600;transition:all 0.2s ease;font-size:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+                Read More on Facebook
+              </a>
+              <button id="reviewBtn" class="btn btn-ghost" style="padding:12px 16px;font-size:14px;font-weight:600">💕
+                Share Your Experience</button>
+            </div>
+          </div>
+
+          <div class="grid3">
+            <div class="info">
+              <div class="title">💗 Made with Love</div>
+              <div>Each batch is handcrafted with
+                intention and real plant medicine by our enchantress herbalist.
+              </div>
+            </div>
+            <div class="info">
+              <div class="title">✨ How to Use</div>
+              <div>Add a few drops to drinks or take directly under the tongue. Start light — the magic can be felt
+                right
+                away with a lovely, relaxing enchantment. Reapply every 20 minutes or as your heart desires.
+              </div>
+            </div>
+            <div class="info">
+              <div class="title">🧪 Real Talk</div>
+              <div>Herbal tincture with damiana, saw palmetto, passionflower & more. 200ml bottle, lasts 3 years. Not
+                FDA approved. Use your magic
+                responsibly.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="accordion">
+            <div class="row" style="justify-content:space-between">
+              <div class="row"><span>🌿</span><strong>Magical Ingredients & Enchantments</strong></div>
+              <button id="toggleIngr">spell details ▼</button>
+            </div>
+            <ul id="ingrList" style="display:none">
+              <li><strong>Chamomile</strong> • Calm & rest, body ease</li>
+              <li><strong>Rhodiola</strong> • Energy & resilience, anxiety relief, spaciousness</li>
+              <li><strong>Ginkgo</strong> • Circulation & memory, mind activation</li>
+              <li><strong>Cinnamon</strong> • Warmth & flow, circulation</li>
+              <li><strong>Nutmeg</strong> • Digestive comfort, energy engaging, mild narcotic</li>
+              <li><strong>Passionflower</strong> • Relaxation & ease, anxiety relief</li>
+              <li><strong>Damiana</strong> • Mood & desire enhancement</li>
+              <li><strong>Saw Palmetto</strong> • Hormone support, arousal</li>
+              <li><strong>Orange Peel</strong> • Uplift, digestion</li>
+              <li><strong>Shatavari</strong> • Vitality & balance, feminine tonifying</li>
+            </ul>
+          </div>
+
+
+          <form id="waitlist" style="display:none;margin-top:20px" onsubmit="return false;">
+            <div class="row" style="gap:8px;align-items:stretch;flex-wrap:wrap">
+              <input id="email" type="email" required placeholder="your@email.com"
+                style="flex:1;min-width:220px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:#fff;border-radius:14px;padding:12px 14px;outline:none" />
+              <button id="joinBtn" class="btn btn-ghost" style="padding:12px 16px;font-weight:600">📧 Join the Enchanted
+                Waitlist</button>
+            </div>
+            <div class="subtle" style="margin-top:12px;font-size:13px;line-height:1.4">This magical batch has vanished!
+              Add your
+              email and we'll send you a mystical whisper when the next enchantment is ready. ✨</div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer>
+      <div style="margin-bottom: 12px;">
+        © <span id="year"></span> Love Apothecary • Handcrafted with Love
+      </div>
+      <div class="subtle" style="font-size: 13px;">
+        No returns • All sales final • <a href="mailto:hello@loveapothecary.shop"
+          style="color:rgba(255,255,255,.7);text-decoration:none;transition:color 0.2s ease"
+          onmouseover="this.style.color='rgba(255,255,255,0.9)'"
+          onmouseout="this.style.color='rgba(255,255,255,0.7)'">hello@loveapothecary.shop</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Drawer: Batch story -->
+  <div id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="sheet">
+      <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:16px">
+        <div id="drawerTitle" class="row" style="color:rgba(255,255,255,.85);font-size:16px;font-weight:600">✨ BM
+          Tomorrow Today — Love Apothecary Batch
+        </div>
+        <button id="closeLore" class="btn-ghost" style="padding:8px 10px;border-radius:10px">✕</button>
+      </div>
+      <p class="muted" style="margin:0;line-height:1.5;font-size:15px">Handcrafted by Cora Bird at Burning Man's Love
+        Apothecary camp. This batch was created with real herbs and genuine intention —
+        damiana for desire, saw palmetto for arousal, passionflower for relaxation, and more. Each phial carries the
+        essence
+        of community, connection, and the magic that happens when hearts open to possibility.</p>
+    </div>
+  </div>
+
+  <!-- Drawer: Review Experience -->
+  <div id="reviewDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="reviewDrawerTitle">
+    <div class="sheet">
+      <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:24px">
+        <div id="reviewDrawerTitle" class="row" style="color:rgba(255,255,255,.85);font-size:20px;font-weight:600">✨
+          Tell Us Your Love Story</div>
+        <button id="closeReview" class="btn-ghost" style="padding:8px 10px;border-radius:10px">✕</button>
+      </div>
+
+      <p class="muted" style="margin:0 0 28px;text-align:center;font-size:15px;line-height:1.5">We'd love to hear how
+        the magic unfolded in your heart.
+        Your love stories inspire us to craft even more enchanting elixirs.</p>
+
+      <form id="reviewForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="reviewerName">Your name (optional)</label>
+          <input type="text" id="reviewerName" placeholder="Anonymous"
+            style="width:100%;border:1px solid var(--line);background:rgba(0,0,0,.3);color:#fff;border-radius:12px;padding:12px 14px;outline:none;margin-top:6px">
+        </div>
+
+        <div class="form-group">
+          <label for="reviewEmail">Email address</label>
+          <input type="email" id="reviewEmail" required placeholder="your@email.com"
+            style="width:100%;border:1px solid var(--line);background:rgba(0,0,0,.3);color:#fff;border-radius:12px;padding:12px 14px;outline:none;margin-top:6px">
+        </div>
+
+        <div class="form-group">
+          <label for="reviewRating">How was your experience?</label>
+          <div class="rating-container" style="margin-top:8px">
+            <button type="button" class="star" data-rating="1">⭐</button>
+            <button type="button" class="star" data-rating="2">⭐</button>
+            <button type="button" class="star" data-rating="3">⭐</button>
+            <button type="button" class="star" data-rating="4">⭐</button>
+            <button type="button" class="star" data-rating="5">⭐</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reviewText">Share your love story</label>
+          <textarea id="reviewText" required
+            placeholder="How did the magic unfold? What beautiful moments did the Love Potion help create? Share your heart's journey..."
+            style="width:100%;border:1px solid var(--line);background:rgba(0,0,0,.3);color:#fff;border-radius:12px;padding:12px 14px;outline:none;margin-top:6px;min-height:120px;resize:vertical;font-family:inherit"></textarea>
+        </div>
+
+        <button type="submit" id="submitReview" class="btn" style="width:100%;justify-content:center;margin-top:16px">
+          💕 Send Your Love Story
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ----- Config (edit here) -------------------------------------------------
+    const PRICE_USD = 33;
+    const INVENTORY = 24; // set to 0 to enable Wish List
+    const MAX_PER_ORDER = 6;
+    const STRIPE_CHECKOUT_URL = '#'; // paste your Stripe Checkout URL
+    const WAITLIST_ENDPOINT = '#'; // paste your waitlist endpoint (Formspree/Mailchimp/etc.)
+    const REVIEW_EMAIL_ENDPOINT = '#'; // paste your review email endpoint (Formspree/EmailJS/etc.)
+    const FACEBOOK_POST_URL = 'https://www.facebook.com/share/p/1Hy5M1vaNQ/?mibextid=wwXIfr'; // paste your Facebook post URL with customer testimonials
+    const INGREDIENTS = [
+      'Organic rose petals',
+      'Cacao absolute',
+      'Vanilla tincture',
+      'Desert sage hydrosol',
+      'Spring water'
+    ];
+
+    // ----- Helpers ------------------------------------------------------------
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Facebook post link
+    const facebookLink = $('#facebookPostLink');
+    if (FACEBOOK_POST_URL && FACEBOOK_POST_URL !== '#') {
+      facebookLink.href = FACEBOOK_POST_URL;
+    } else {
+      facebookLink.style.display = 'none';
+    }
+
+    // Ingredients
+    const ingrUL = $('#ingrList');
+    INGREDIENTS.forEach(t => { const li = document.createElement('li'); li.textContent = t; ingrUL.appendChild(li); });
+
+    const toggleBtn = $('#toggleIngr');
+    let openIngr = false;
+    toggleBtn.addEventListener('click', () => {
+      openIngr = !openIngr; ingrUL.style.display = openIngr ? 'block' : 'none';
+      toggleBtn.textContent = openIngr ? 'details ▼' : 'details ▲';
+    });
+
+    // Qty & total
+    const qtyVal = $('#qty');
+    const totalEl = $('#total');
+    const stockLine = $('#stockLine');
+    const waitlistForm = $('#waitlist');
+    let qty = 1;
+    $('#price').textContent = PRICE_USD;
+    const updateTotal = () => { totalEl.textContent = (qty * PRICE_USD).toString(); };
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+    $('#minus').onclick = () => { qty = clamp(qty - 1, 1, Math.min(MAX_PER_ORDER, Math.max(1, INVENTORY))); qtyVal.textContent = qty; updateTotal(); };
+    $('#plus').onclick = () => { qty = clamp(qty + 1, 1, Math.min(MAX_PER_ORDER, Math.max(1, INVENTORY))); qtyVal.textContent = qty; updateTotal(); };
+    updateTotal();
+
+    // Inventory / modes
+    if (INVENTORY <= 0) {
+      stockLine.textContent = 'This batch is gone.';
+      $('#buyBtn').style.display = 'none';
+      waitlistForm.style.display = 'block';
+    } else {
+      stockLine.textContent = INVENTORY + ' in stock • limited run';
+    }
+
+    // Buy
+    const burst = $('#burst');
+    $('#buyBtn').addEventListener('click', () => {
+      // Heart burst
+      for (let i = 0; i < 14; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart hb';
+        h.style.left = 'calc(50% + ' + ((i - 7) * 6) + 'px)';
+        h.style.top = '0px';
+        h.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="#ff82bf"><path d="M20.8 4.6c-1.9-1.8-5-1.8-6.9 0L12 6.5 10.1 4.6c-1.9-1.8-5-1.8-6.9 0-2 1.9-2 5 0 6.9l1.9 1.9L12 21l6.9-7.6 1.9-1.9c2-1.9 2-5 0-6.9z"/></svg>';
+        burst.appendChild(h);
+        setTimeout(() => h.remove(), 1000);
+      }
+      if (STRIPE_CHECKOUT_URL && STRIPE_CHECKOUT_URL !== '#') {
+        const url = new URL(STRIPE_CHECKOUT_URL, window.location.origin);
+        url.searchParams.set('qty', String(qty));
+        window.location.href = url.toString();
+      }
+    });
+
+    // Waitlist submit
+    $('#joinBtn').addEventListener('click', async () => {
+      const email = $('#email').value.trim();
+      if (!email) { alert('Enter your email first ✨'); return; }
+      if (!WAITLIST_ENDPOINT || WAITLIST_ENDPOINT === '#') { alert('Add your waitlist endpoint in the code.'); return; }
+      try {
+        await fetch(WAITLIST_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, batch: 'BM Tomorrow Today — Limited Batch', product: 'Love Potion' }) });
+        $('#email').value = '';
+        alert("You're on the list. We'll whisper when the next batch is born ✨");
+      } catch (e) { alert('Hmm, that did not go through. Try again?'); }
+    });
+
+    // Drawer
+    const drawer = $('#drawer');
+    $('#openLore').onclick = () => drawer.classList.add('open');
+    $('#closeLore').onclick = () => drawer.classList.remove('open');
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) drawer.classList.remove('open'); });
+
+    // Review Drawer
+    const reviewDrawer = $('#reviewDrawer');
+    $('#reviewBtn').onclick = () => reviewDrawer.classList.add('open');
+    $('#closeReview').onclick = () => reviewDrawer.classList.remove('open');
+    reviewDrawer.addEventListener('click', (e) => { if (e.target === reviewDrawer) reviewDrawer.classList.remove('open'); });
+
+    // Close drawers with Esc key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        drawer.classList.remove('open');
+        reviewDrawer.classList.remove('open');
+      }
+    });
+
+    // Fireflies trail
+    window.addEventListener('mousemove', (e) => {
+      const d = document.createElement('div');
+      d.className = 'fly'; d.style.left = e.clientX + 'px'; d.style.top = e.clientY + 'px';
+      document.body.appendChild(d); setTimeout(() => d.remove(), 800);
+    });
+
+    // Liquid path slosh (simple sine morph)
+    const path = document.getElementById('liquidPath');
+    let t = 0;
+    function slosh() {
+      t += 0.04; const A = 4; const baseY = 160; const leftX = 40, rightX = 180; const mid = (leftX + rightX) / 2;
+      const y1 = baseY + Math.sin(t) * A; const y2 = baseY + Math.sin(t + 1.2) * A;
+      const d = `M${leftX} ${baseY} C ${leftX + 20} ${y1 - 18}, ${rightX - 20} ${y2 - 18}, ${rightX} ${baseY} Q 150 230, 110 246 Q 70 218, ${leftX} ${baseY} Z`;
+      path.setAttribute('d', d);
+      requestAnimationFrame(slosh);
+    }
+    requestAnimationFrame(slosh);
+
+    // Double‑tap wish ripple on bottle
+    const bottle = document.getElementById('bottle');
+    let lastTap = 0;
+    bottle.addEventListener('click', (e) => {
+      const now = Date.now();
+      if (now - lastTap < 350) {
+        const r = document.createElement('span');
+        r.style.position = 'absolute'; r.style.left = (bottle.getBoundingClientRect().left + e.offsetX) + 'px'; r.style.top = (bottle.getBoundingClientRect().top + e.offsetY) + 'px';
+        r.style.width = r.style.height = '8px'; r.style.borderRadius = '50%'; r.style.background = 'rgba(255,255,255,.9)'; r.style.boxShadow = '0 0 30px #ff8bc6'; r.style.pointerEvents = 'none';
+        document.body.appendChild(r); setTimeout(() => r.remove(), 400);
+      }
+      lastTap = now;
+    });
+
+    // Review functionality
+    let selectedRating = 0;
+    const stars = $$('.star');
+    const reviewForm = $('#reviewForm');
+    const reviewBtn = $('#reviewBtn');
+
+    // Star rating interaction
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        selectedRating = index + 1;
+        stars.forEach((s, i) => {
+          s.classList.toggle('active', i < selectedRating);
+        });
+      });
+    });
+
+    // Open review drawer
+    reviewBtn.addEventListener('click', () => {
+      $('#reviewDrawer').classList.add('open');
+    });
+
+    // Review form submission
+    reviewForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = $('#reviewerName').value.trim() || 'Anonymous';
+      const email = $('#reviewEmail').value.trim();
+      const reviewText = $('#reviewText').value.trim();
+
+      if (!email) {
+        alert('Please enter your email address ✨');
+        return;
+      }
+
+      if (!reviewText) {
+        alert('Please tell us about your experience ✨');
+        return;
+      }
+
+      if (selectedRating === 0) {
+        alert('Please select a rating ✨');
+        return;
+      }
+
+      if (!REVIEW_EMAIL_ENDPOINT || REVIEW_EMAIL_ENDPOINT === '#') {
+        alert('Review email endpoint not configured. Please contact us directly.');
+        return;
+      }
+
+      try {
+        const submitBtn = $('#submitReview');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        const reviewData = {
+          name,
+          email,
+          rating: selectedRating,
+          review: reviewText,
+          product: 'Love Potion',
+          batch: 'BM Tomorrow Today — Limited Batch',
+          timestamp: new Date().toISOString()
+        };
+
+        await fetch(REVIEW_EMAIL_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(reviewData)
+        });
+
+        // Reset form
+        reviewForm.reset();
+        selectedRating = 0;
+        stars.forEach(s => s.classList.remove('active'));
+
+        alert("Thank you for sharing your experience! Your review helps us create more magical moments ✨");
+
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+
+      } catch (error) {
+        alert('Oops! Something went wrong. Please try again or contact us directly ✨');
+        $('#submitReview').textContent = '💌 Send Your Review';
+        $('#submitReview').disabled = false;
+      }
+    });
+  </script>
+</body>
+
+</html>
